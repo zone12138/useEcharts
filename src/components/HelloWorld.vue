@@ -7,7 +7,7 @@ import { ref, inject, onMounted, watch, reactive } from "vue";
 
 const echarts = inject("$echarts");
 const chart = ref(null);
-
+/** @type EChartsOption */
 const defaultOptions = reactive({
   title: {
     text: "ECharts 入门示例",
@@ -15,6 +15,10 @@ const defaultOptions = reactive({
     left: "center",
   },
   tooltip: {},
+  legend: {
+    show: true,
+    right: '20%',
+  },
   xAxis: {
     data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
   },
@@ -37,7 +41,6 @@ watch(
 
 onMounted(() => {
   const myChart = echarts.init(chart.value);
-  /** @type EChartsOption */
   myChart.setOption(defaultOptions);
 });
 </script>
